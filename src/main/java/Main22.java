@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -11,11 +12,11 @@ public class Main22 {
 
         System.out.println("----".repeat(10));
 
-        //Дана последовательность из N целых чисел. Верно ли, что последовательность является возрастающей.
-        int[] ar = new int[25];
+        int[] ar = new int[] {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
 
-        for (int i=0; i < 25; i++) ar[i] = new Random().nextInt(-99, 99);
-        System.out.println(ar.toString());
+        System.out.println(Arrays.toString(ar));
+        System.out.println("Массив " + isRise(ar));
+        System.out.println("----".repeat(10));
 
     }
 
@@ -52,4 +53,16 @@ public class Main22 {
         return sum;
     }
 
+    /**
+     * @apiNote Дана последовательность из N целых чисел.
+     * Верно ли, что последовательность является возрастающей.
+     * @param ar массив
+     * @return возрастает или нет
+     */
+    public static String isRise(int[] ar){
+        for (int i = 0; i < ar.length - 1; i++) {
+            if (ar[i] > ar[i+1]) return "Не возрастает";
+        }
+        return "Возрастает";
+    }
 }
