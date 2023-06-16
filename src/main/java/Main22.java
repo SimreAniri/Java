@@ -12,19 +12,29 @@ public class Main22 {
 
         System.out.println("----".repeat(10));
 
-        int[] ar = new int[] {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+        int[] ar = new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
 
         System.out.println(Arrays.toString(ar));
         System.out.println("Массив " + isRise(ar));
+        System.out.println("----".repeat(10));
+
+        int[] ar2 = new int[15];
+        for (int i = 0; i < 15; i++) {
+            ar2[i] = new Random().nextInt(-199, 199);
+        }
+
+        System.out.println(Arrays.toString(ar2));
+
+        System.out.println(Arrays.toString(negToSumInd(ar2)));
         System.out.println("----".repeat(10));
 
     }
 
 
     /**
-     * @apiNote Дана последовательность n целых чисел. Найти сумму простых чисел.
      * @param n граница последовательности
      * @return сумма простых чисел
+     * @apiNote Дана последовательность n целых чисел. Найти сумму простых чисел.
      */
     public static int sumPrimeNums(int n) {
 
@@ -54,15 +64,36 @@ public class Main22 {
     }
 
     /**
-     * @apiNote Дана последовательность из N целых чисел.
-     * Верно ли, что последовательность является возрастающей.
      * @param ar массив
      * @return возрастает или нет
+     * @apiNote Дана последовательность из N целых чисел.
+     * Верно ли, что последовательность является возрастающей.
      */
-    public static String isRise(int[] ar){
+    public static String isRise(int[] ar) {
         for (int i = 0; i < ar.length - 1; i++) {
-            if (ar[i] > ar[i+1]) return "Не возрастает";
+            if (ar[i] > ar[i + 1]) return "Не возрастает";
         }
         return "Возрастает";
+    }
+
+    /**
+     * @param array массив целых чисел
+     * @return массив
+     * @apiNote Дан массив целых чисел. Заменить отрицательные элементы на сумму индексов двузначных
+     * элементов массива.
+     */
+    public static int[] negToSumInd(int[] array) {
+        ArrayList<Integer> indList = new ArrayList<>();
+        int sumInd = 0;
+
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] < 0) indList.add(i);
+            if (array[i] / 10 != 0 && array[i] / 10 < 10 && array[i] / 10 > -10) sumInd += i;
+        }
+
+        for (int i : indList) {
+            array[i] = sumInd;
+        }
+        return array;
     }
 }
