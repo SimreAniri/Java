@@ -19,23 +19,23 @@ public class Main3 {
         prodList[4] = prod5;
 
         System.out.println("Максимальная цена = "
-                + maxPriceForNameAndSort(prodList, "высший", new String[] {"1", "2"}));
+                + maxPriceForNameAndSort(prodList, "высший", new String[]{"1", "2"}));
     }
 
     /**
-     * @apiNote Дан массив записей: наименование товара, цена, сорт. Найти наибольшую цену товаров
-     * 1го или 2-го сорта среди товаров, название которых содержит «высший».
      * @param prodAr массив продуктов
-     * @param name ключ поиска в названии
+     * @param name   ключ поиска в названии
      * @param sortAr список сортов продукта
      * @return максимальная цена
+     * @apiNote Дан массив записей: наименование товара, цена, сорт. Найти наибольшую цену товаров
+     * 1го или 2-го сорта среди товаров, название которых содержит «высший».
      */
-    public static double maxPriceForNameAndSort(Product[] prodAr, String name, String[] sortAr){
+    public static double maxPriceForNameAndSort(Product[] prodAr, String name, String[] sortAr) {
         double maxPrice = 0;
 
-        for (Product prod: prodAr) {
-            if (prod.getName().toLowerCase().contains(name)){
-                for (String sort: sortAr) {
+        for (Product prod : prodAr) {
+            if (prod.getName().toLowerCase().contains(name)) {
+                for (String sort : sortAr) {
                     if (prod.getSort().equals(sort) && prod.getPrice() > maxPrice) {
                         maxPrice = prod.getPrice();
                     }
