@@ -10,7 +10,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Product {
     private String name;
+    private String country;
     private Double price;
     private String sort;
+    private Double weight; // в кг
 
 }
