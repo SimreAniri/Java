@@ -2,6 +2,7 @@ package S3;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Random;
 
 public class Main3 {
     public static void main(String[] args) {
@@ -45,6 +46,37 @@ public class Main3 {
 
         System.out.println("-".repeat(50));
         System.out.println("myBook = " + booksWithPrime(bookList, "а", 2000));
+
+        // Задан целочисленный список ArrayList.
+        // Найти минимальное, максимальное и среднее из этого списка.
+        System.out.println("-".repeat(50));
+
+        ArrayList<Integer> list = new ArrayList<>();
+        int size = 20;
+
+        for (int i = 0; i < size; i++) list.add(new Random().nextInt(100));
+        System.out.println(list);
+
+        int maxNum = list.get(0), minNum = list.get(0);
+        double mean = 0;
+
+        int i = 0;
+        while (i <= list.size() - 1) {
+
+            mean += list.get(i);
+
+            if (list.get(i) < minNum) minNum = list.get(i);
+            if (list.get(i) > maxNum) maxNum = list.get(i);
+
+            i++;
+        }
+
+        mean = mean / size;
+
+        System.out.println("Минимальное значение " + minNum);
+        System.out.println("Максимальное значение " + maxNum);
+        System.out.println("Среднее значение " + mean);
+
     }
 
     /**
@@ -94,9 +126,9 @@ public class Main3 {
     }
 
     /**
-     * @apiNote Ищет простые числа
      * @param n верхняя граница
      * @return список простых чисел
+     * @apiNote Ищет простые числа
      */
     public static ArrayList<Integer> primeNums(int n) {
         ArrayList<Integer> primeNums = new ArrayList<>();
@@ -120,14 +152,14 @@ public class Main3 {
     }
 
     /**
+     * @param bookAr массив книг
+     * @param cons   подстрока в фамилии автора
+     * @param year   нижняя граница года издания
+     * @return список названий книг
      * @apiNote Список названий книг, в которых простое количество страниц,и
      * фамилия автора содержит подстроку, а год издания после year, включительно.
-     * @param bookAr массив книг
-     * @param cons подстрока в фамилии автора
-     * @param year нижняя граница года издания
-     * @return список названий книг
      */
-    public static ArrayList<String> booksWithPrime(Books[] bookAr, String cons, int year){
+    public static ArrayList<String> booksWithPrime(Books[] bookAr, String cons, int year) {
         cons = cons.toLowerCase();
         ArrayList<String> books = new ArrayList<>();
         ArrayList<Integer> primeNums1000 = primeNums(1000);
