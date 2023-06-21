@@ -25,9 +25,26 @@ public class Main3 {
                 + maxPriceForNameAndSort(prodList, "высший", new String[]{"1", "2"}));
 
         System.out.println("-".repeat(50));
+        System.out.println("Продукты с минимальной ценой:\n"
+                + prodListWithMinPrice(prodList, "1"));
 
+        Books book1 = new Books("Еще один великолепный МИФ", "Асприн", 1978, 565.8, 159);
+        Books book2 = new Books("Профессия - Ведьма", "Громко", 2003, 565.8, 444);
+        Books book3 = new Books("Сумерки", "Майер", 2005, 765.8, 449);
+        Books book4 = new Books("Чужак", "Фрай", 1996, 865.9, 607);
+        Books book5 = new Books("Эрагон", "Паолини", 2003, 965.8, 631);
+        Books book6 = new Books("Эрагон. Возвраение", "Паолини", 2006, 995.8, 877);
 
-        System.out.println("Продукты с минимальной ценой:\n" + prodListWithMinPrice(prodList, "1"));
+        Books[] bookList = new Books[6];
+        bookList[0] = book1;
+        bookList[1] = book2;
+        bookList[2] = book3;
+        bookList[3] = book4;
+        bookList[4] = book5;
+        bookList[5] = book6;
+
+        System.out.println("-".repeat(50));
+        System.out.println("myBook = " + booksWithPrime(bookList, "а", 2000));
     }
 
     /**
@@ -76,4 +93,56 @@ public class Main3 {
         return minList;
     }
 
+    /**
+     * @apiNote Ищет простые числа
+     * @param n верхняя граница
+     * @return список простых чисел
+     */
+    public static ArrayList<Integer> primeNums(int n) {
+        ArrayList<Integer> primeNums = new ArrayList<>();
+
+        for (int i = 2; i < n; i++) {
+            boolean flag = true;
+
+            for (int primeNum : primeNums) {
+
+                if (primeNum > Math.sqrt(i) + 1) break;
+
+                if (i % primeNum == 0) {
+                    flag = false;
+                    break;
+                }
+            }
+            if (flag) primeNums.add(i);
+        }
+        primeNums.add(0, 1);
+        return primeNums;
+    }
+
+    /**
+     * @apiNote Список названий книг, в которых простое количество страниц,и
+     * фамилия автора содержит подстроку, а год издания после year, включительно.
+     * @param bookAr массив книг
+     * @param cons подстрока в фамилии автора
+     * @param year нижняя граница года издания
+     * @return список названий книг
+     */
+    public static ArrayList<String> booksWithPrime(Books[] bookAr, String cons, int year){
+        cons = cons.toLowerCase();
+        ArrayList<String> books = new ArrayList<>();
+        ArrayList<Integer> primeNums1000 = primeNums(1000);
+
+        for (Books book : bookAr) {
+            if (book.getAuthorSurname().toLowerCase().contains(cons) && book.getYear() >= year) {
+                if (book.getPagesCount() < 1000 && primeNums1000.contains(book.getPagesCount())) {
+                    books.add(book.getTitle());
+                }
+                if (book.getPagesCount() > 1000
+                        && primeNums(book.getPagesCount()).contains(book.getPagesCount())) {
+                    books.add(book.getTitle());
+                }
+            }
+        }
+        return books;
+    }
 }
