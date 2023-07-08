@@ -43,17 +43,16 @@ public class Main6 {
         String param = sc.nextLine();
         String paramLim = "";
 
-        if (param.equals("1") || param.equals("2")){
-            System.out.println("Точное значение или минимальное?");
-            System.out.println("S/M ");
-
-            paramLim = sc.nextLine();
-        }
-
-
-
         HashMap<String, String> myParam = new HashMap<>();
         while (!param.toLowerCase().contains("q")) {
+
+            if (param.equals("1") || param.equals("2")){
+                System.out.println("Точное значение или минимальное?");
+                System.out.println("S/M ");
+                paramLim = sc.nextLine();
+            }
+            System.out.println("Введите значение: ");
+
             switch (param) {
                 case "1":
                     if (paramLim.toLowerCase().equals("s")){
@@ -80,6 +79,8 @@ public class Main6 {
                     myParam.put("Цвет", sc.next());
                     break;
             }
+            System.out.println("1 - ОЗУ\n2 - ЖД\n3 - ОС\n4 - Цвет\nQ - выход");
+            System.out.println("Выберите следующий критерии для поиска: ");
             param = sc.nextLine();
         }
         sc.close();

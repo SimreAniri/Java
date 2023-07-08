@@ -22,13 +22,13 @@ public class NoteBook {
             if (!(Integer.parseInt(params.get("ОЗУ")) == ram)) flag = false;
         }
         if (params.containsKey("ОЗУ - m")){
-            if (!(Integer.parseInt(params.get("ОЗУ - m")) < ram)) flag = false;
+            if (Integer.parseInt(params.get("ОЗУ - m")) > ram) flag = false;
         }
         if (params.containsKey("ЖД")){
             if (!(Integer.parseInt(params.get("ЖД")) == hhd)) flag = false;
         }
         if (params.containsKey("ЖД - m")){
-            if (!(Integer.parseInt(params.get("ЖД - m")) < hhd)) flag = false;
+            if (Integer.parseInt(params.get("ЖД - m")) > hhd) flag = false;
         }
         if (params.containsKey("ОС")){
             if (!(params.get("ОС").toLowerCase().equals(os.toLowerCase()))) flag = false;
