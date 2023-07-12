@@ -1,24 +1,44 @@
 package OOP.S1;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Basket {
-    private ArrayList<Product> basket;
+    private HashMap<Product, Double> basket;
 
-    public Basket(ArrayList<Product> basket) {
+    public Basket(HashMap<Product, Double> basket) {
         this.basket = basket;
     }
 
     public Basket() {
-        this.basket = new ArrayList<Product>();
+        this.basket = new HashMap<Product, Double>();
     }
 
-    public ArrayList<Product> getBasket() {
+    public HashMap<Product, Double> getBasket() {
         return basket;
     }
 
-    public void put(Product prod) {
-        this.basket.add(prod);
+    public void setBasket(HashMap<Product, Double> basket) {
+        this.basket = basket;
+    }
+
+    public void putProduct(Product prod, Double count) {
+        basket.putIfAbsent(prod, 0.0);
+        basket.put(prod, basket.get(prod) + count);
+    }
+
+    public boolean delProduct(Product prod, Double count) {
+        boolean flag = true;
+        if (basket.containsKey(prod)) {
+            if (basket.get(prod) < count) {
+                System.out.println("В корзине находится меньше товара, чем вы пытаетесь выложить");
+                flag = false;
+            } else basket.put(prod, basket.get(prod) - count);
+        } else {
+            System.out.println("Такого товара нет в корзине");
+            flag = false;
+        }
+        return flag;
     }
 
     @Override

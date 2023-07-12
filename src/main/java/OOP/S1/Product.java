@@ -18,20 +18,20 @@ public class Product {
         return name;
     }
 
-    public Double getPrice() {
-        return price;
-    }
-
-    public int getRaiting() {
-        return raiting;
-    }
-
     public void setName(String name) {
         this.name = name;
     }
 
+    public Double getPrice() {
+        return price;
+    }
+
     public void setPrice(Double price) {
         this.price = price;
+    }
+
+    public int getRaiting() {
+        return raiting;
     }
 
     public void setRaiting(int raiting) {
@@ -40,6 +40,6 @@ public class Product {
 
     @Override
     public String toString() {
-        return  name ;
+        return name + ", " + price + " руб.";
     }
 }

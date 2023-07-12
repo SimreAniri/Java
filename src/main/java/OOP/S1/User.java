@@ -5,10 +5,13 @@ public class User {
     private String password;
     private Basket mybasket;
 
-    public User(String login, String password) {
+    private Store shop;
+
+    public User(String login, String password, Store shop) {
         this.login = login;
         this.password = password;
         this.mybasket = new Basket();
+        this.shop = shop;
     }
 
     public User() {
@@ -22,16 +25,27 @@ public class User {
         return password;
     }
 
-    public Basket getMybasket() {
-        return mybasket;
-    }
-
     public void setPassword(String password) {
         this.password = password;
     }
 
-    public void putToMybasket(Product prod) {
-        mybasket.put(prod);
+    public Basket getMybasket() {
+        return mybasket;
+    }
 
+    public void setMybasket(Basket mybasket) {
+        this.mybasket = mybasket;
+    }
+
+    public void putToMybasket(Product prod, Double count) {
+        if (shop.getProduct(prod, count)) {
+            mybasket.putProduct(prod, count);
+        }
+    }
+
+    public void delFromMyBasket(Product prod, Double count) {
+        if (mybasket.delProduct(prod, count)) {
+            shop.returnProduct(prod, count);
+        }
     }
 }
