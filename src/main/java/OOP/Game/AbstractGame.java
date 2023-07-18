@@ -19,9 +19,8 @@ public abstract class AbstractGame implements Game {
         System.out.println("comp:  " + computerWord);
         this.gameStatus = GameStatus.START;
         this.currentTry = 0;
-        System.out.println("System.getProperty(\"user.dir\") = " + System.getProperty("user.dir"));
         log = new Log(System.getProperty("user.dir") + "\\", "log.txt");
-        log.getLog("НОВАЯ ИГРА");
+        log.getLog("НОВАЯ ИГРА "+ getClassName());
         log.getLog("Сгенерировано слово: " + computerWord);
     }
 
@@ -61,6 +60,7 @@ public abstract class AbstractGame implements Game {
     }
 
     abstract List<String> generateCharList();
+    abstract String getClassName();
 
     private String generateWord() {
         List<String> charList = generateCharList();
