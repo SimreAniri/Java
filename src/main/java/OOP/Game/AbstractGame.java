@@ -1,5 +1,6 @@
 package OOP.Game;
 
+import java.io.FileNotFoundException;
 import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
@@ -21,12 +22,12 @@ public abstract class AbstractGame implements Game {
         this.gameStatus = GameStatus.START;
         this.currentTry = 0;
         log = new Log(System.getProperty("user.dir") + "\\", "log.txt");
-        log.getLog("НОВАЯ ИГРА " + getClassName());
-        log.getLog("Сгенерировано слово: " + computerWord + ". Число попыток " + maxTry);
+        log.SetLog("НОВАЯ ИГРА " + getClassName());
+        log.SetLog("Сгенерировано слово: " + computerWord + ". Число попыток " + maxTry);
     }
 
     public void restartGame() {
-        log.getLog("Перезапуск игры");
+        log.SetLog("Перезапуск игры");
         Scanner scanner = new Scanner(System.in);
         System.out.println("Введите длину слова и количество попыток: ");
         start(scanner.nextInt(), scanner.nextInt());
@@ -37,7 +38,7 @@ public abstract class AbstractGame implements Game {
     public Answer inputValue(String value) {
         if (currentTry >= maxTry) {
             gameStatus = GameStatus.FINISH;
-            log.getLog("FINISH по количеству попыток\n------------------------------");
+            log.SetLog("FINISH по количеству попыток\n------------------------------");
             System.out.println("вы проиграли по количеству попыток");
             return null;
         }
@@ -53,10 +54,10 @@ public abstract class AbstractGame implements Game {
         }
         currentTry++;
         Answer answer = new Answer(bull, cow, currentTry);
-        log.getLog(value, answer);
+        log.SetLog(value, answer);
         if (sizeWord.equals(bull)) {
             gameStatus = GameStatus.FINISH;
-            log.getLog("FINISH ПОБЕДА\n------------------------------");
+            log.SetLog("FINISH ПОБЕДА\n------------------------------");
             System.out.println("вы Победили!!");
             return null;
         }
@@ -82,5 +83,9 @@ public abstract class AbstractGame implements Game {
             charList.remove(randomIndex);
         }
         return result;
+    }
+
+    public void readLog() throws FileNotFoundException {
+        log.readLog();
     }
 }

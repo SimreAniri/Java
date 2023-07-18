@@ -1,9 +1,10 @@
 package OOP.Game;
 
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Выберите вариант игры:");
@@ -53,5 +54,6 @@ public class Main {
                 } else game.restartGame();
             }
         }
+        game.readLog();
     }
 }
