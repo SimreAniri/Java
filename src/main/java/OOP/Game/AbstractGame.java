@@ -2,6 +2,7 @@ package OOP.Game;
 
 import java.util.List;
 import java.util.Random;
+import java.util.Scanner;
 
 public abstract class AbstractGame implements Game {
     Integer sizeWord;
@@ -20,8 +21,16 @@ public abstract class AbstractGame implements Game {
         this.gameStatus = GameStatus.START;
         this.currentTry = 0;
         log = new Log(System.getProperty("user.dir") + "\\", "log.txt");
-        log.getLog("НОВАЯ ИГРА "+ getClassName());
-        log.getLog("Сгенерировано слово: " + computerWord);
+        log.getLog("НОВАЯ ИГРА " + getClassName());
+        log.getLog("Сгенерировано слово: " + computerWord + ". Число попыток " + maxTry);
+    }
+
+    public void restartGame() {
+        log.getLog("Перезапуск игры");
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Введите длину слова и количество попыток: ");
+        start(scanner.nextInt(), scanner.nextInt());
+        scanner.nextLine();
     }
 
     @Override
@@ -60,6 +69,7 @@ public abstract class AbstractGame implements Game {
     }
 
     abstract List<String> generateCharList();
+
     abstract String getClassName();
 
     private String generateWord() {
