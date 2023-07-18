@@ -1,4 +1,4 @@
-package org.example.z3.q2;
+package OOP.Game;
 
 import java.util.List;
 import java.util.Random;
@@ -9,6 +9,7 @@ public abstract class AbstractGame implements Game {
     int currentTry;
     String computerWord;
     GameStatus gameStatus = GameStatus.INIT;
+    Log log;
 
     @Override
     public void start(Integer sizeWord, Integer maxTry) {
@@ -18,12 +19,17 @@ public abstract class AbstractGame implements Game {
         System.out.println("comp:  " + computerWord);
         this.gameStatus = GameStatus.START;
         this.currentTry = 0;
+        System.out.println("System.getProperty(\"user.dir\") = " + System.getProperty("user.dir"));
+        log = new Log(System.getProperty("user.dir") + "\\", "log.txt");
+        log.getLog("НОВАЯ ИГРА");
+        log.getLog("Сгенерировано слово: " + computerWord);
     }
 
     @Override
     public Answer inputValue(String value) {
         if (currentTry >= maxTry) {
             gameStatus = GameStatus.FINISH;
+            log.getLog("FINISH по количеству попыток\n------------------------------");
             System.out.println("вы проиграли по количеству попыток");
             return null;
         }
@@ -38,12 +44,15 @@ public abstract class AbstractGame implements Game {
             }
         }
         currentTry++;
+        Answer answer = new Answer(bull, cow, currentTry);
+        log.getLog(value, answer);
         if (sizeWord.equals(bull)) {
             gameStatus = GameStatus.FINISH;
+            log.getLog("FINISH ПОБЕДА\n------------------------------");
             System.out.println("вы Победили!!");
             return null;
         }
-        return new Answer(bull, cow, currentTry);
+        return answer;
     }
 
     @Override

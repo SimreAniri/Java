@@ -1,4 +1,4 @@
-package org.example.z3.q2;
+package OOP.Game;
 
 public enum GameStatus {
     INIT, START, FINISH;
