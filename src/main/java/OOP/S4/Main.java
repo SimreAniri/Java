@@ -13,8 +13,10 @@ public class Main {
 
         System.out.println(a + b);
 
-        System.out.println("calc.mult(Arrays.asList(a, b)) = " + calc.mult(Arrays.asList(a, b)));
-        System.out.println("calc.div(a, b) = " + calc.div(a, b));
-    }
+        System.out.println("calc.mult()) = " + calc.mult(Arrays.asList(a, b)));
+        System.out.println("calc.div() = " + calc.div(a, b));
 
+        System.out.println("calc.decToBin() = " + calc.decToBin("291.725"));
+        System.out.println("calc.decToBin() = " + calc.decToBin(291.725));
+    }
 }
