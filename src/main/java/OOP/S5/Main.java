@@ -8,6 +8,9 @@ public class Main {
         controller.createStuden("Яков","Яковлев","А.");
         controller.createStuden("Алексей","Романов","В.");
         controller.createStuden("Влад","Баранов","М.");
+        controller.createTeacher("Лариса", "Романцова", "И.");
         controller.getAllStudent();
+        System.out.println("----------");
+        controller.getAllTeacher();
     }
 }

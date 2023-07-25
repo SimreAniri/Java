@@ -1,11 +1,13 @@
 package OOP.S5.model;
 
 public class Student extends User{
-    int studentId;
+    String studentId;
+    static int countStudent = 0;
 
-    public Student(String name, String surname, String patron, int studentId) {
+    public Student(String name, String surname, String patron) {
         super(name, surname, patron);
-        this.studentId = studentId;
+        countStudent++;
+        studentId = "St" + countStudent;
     }
 
     @Override
