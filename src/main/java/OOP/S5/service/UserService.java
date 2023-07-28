@@ -31,7 +31,7 @@ public class UserService implements DataService {
     }
 
     @Override
-    public List<User> readOnlyStudent() {
+    public List<User> readOnlyStudent() { //принцип единой ответственности
         List<User> students = new ArrayList<>();
         for (User user : userList) {
             if (user instanceof Student) {
@@ -42,7 +42,7 @@ public class UserService implements DataService {
     }
 
     @Override
-    public List<User> readOnlyTeachers() {
+    public List<User> readOnlyTeachers() { //принцип единой ответственности
         List<User> teachers = new ArrayList<>();
         for (User user : userList) {
             if (user instanceof Teacher) {
