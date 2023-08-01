@@ -1,4 +1,8 @@
-package OOP.Calculator;
+package OOP.Calculator.View;
+
+import OOP.Calculator.Service.Calculable;
+import OOP.Calculator.ComplexNum;
+import OOP.Calculator.Service.ICalculableFactory;
 
 import java.util.Arrays;
 import java.util.List;

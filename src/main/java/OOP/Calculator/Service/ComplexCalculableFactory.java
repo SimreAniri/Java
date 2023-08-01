@@ -1,4 +1,6 @@
-package OOP.Calculator;
+package OOP.Calculator.Service;
+
+import OOP.Calculator.ComplexNum;
 
 public class ComplexCalculableFactory<E> implements ICalculableFactory<E>{
 

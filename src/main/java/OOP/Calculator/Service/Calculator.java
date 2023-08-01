@@ -1,4 +1,4 @@
-package OOP.Calculator;
+package OOP.Calculator.Service;
 
 public final class Calculator implements NumCalculable {
 

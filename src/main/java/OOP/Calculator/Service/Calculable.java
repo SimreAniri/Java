@@ -1,4 +1,4 @@
-package OOP.Calculator;
+package OOP.Calculator.Service;
 
 public interface Calculable<E>{
     Calculable sum(E arg);

@@ -1,5 +1,11 @@
 package OOP.Calculator;
 
+import OOP.Calculator.Service.ComplexCalculableFactory;
+import OOP.Calculator.Service.ICalculableFactory;
+import OOP.Calculator.Service.IntCalculableFactory;
+import OOP.Calculator.View.ViewCalculator;
+import OOP.Calculator.View.ViewComplexCalculator;
+
 // Создать логирование операций, для класса Calculator. Класс Calculator не должен изменится.
 public class Main {
     public static void main(String[] args) {
