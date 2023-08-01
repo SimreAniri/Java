@@ -1,29 +1,33 @@
 package OOP.Calculator;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
-public class ViewCalculator{
-
+public class ViewComplexCalculator {
     private ICalculableFactory calculableFactory;
 
-    public ViewCalculator(ICalculableFactory calculableFactory) {
+    public ViewComplexCalculator(ICalculableFactory calculableFactory) {
         this.calculableFactory = calculableFactory;
     }
 
     public void run() {
         while (true) {
-            int primaryArg = promptInt("Введите первый аргумент: ");
-            Calculable calculator = calculableFactory.create(primaryArg);
+            List<String> primaryArgs = promptStr("Введите первый аргумент в формате Re Im: ");
+            Calculable calculator = calculableFactory.create(new ComplexNum(Double.parseDouble(primaryArgs.get(0)),
+                    Double.parseDouble(primaryArgs.get(1))));
             while (true) {
                 String cmd = prompt("Введите команду (*, +, =) : ");
                 if (cmd.equals("*")) {
-                    int arg = promptInt("Введите второй аргумент: ");
-                    calculator.multi(arg);
+                    List<String> args = promptStr("Введите второй аргумент в формате Re Im: ");
+                    calculator.multi(new ComplexNum(Double.parseDouble(args.get(0)),
+                            Double.parseDouble(args.get(1))));
                     continue;
                 }
                 if (cmd.equals("+")) {
-                    int arg = promptInt("Введите второй аргумент: ");
-                    calculator.sum(arg);
+                    List<String> args = promptStr("Введите второй аргумент в формате Re Im: ");
+                    calculator.sum(new ComplexNum(Double.parseDouble(args.get(0)),
+                            Double.parseDouble(args.get(1))));
                     continue;
                 }
                 if (cmd.equals("=")) {
@@ -46,9 +50,9 @@ public class ViewCalculator{
         return in.nextLine();
     }
 
-    private int promptInt(String message) {
+    private List<String> promptStr(String message) {
         Scanner in = new Scanner(System.in);
         System.out.print(message);
-        return Integer.parseInt(in.nextLine());
+        return Arrays.asList(in.nextLine().split(" "));
     }
 }
