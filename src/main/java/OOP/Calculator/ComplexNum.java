@@ -16,6 +16,13 @@ public class ComplexNum {
     public double getIm() {
         return im;
     }
+    public void setRe(double re) {
+        this.re = re;
+    }
+
+    public void setIm(double im) {
+        this.im = im;
+    }
 
     @Override
     public String toString() {

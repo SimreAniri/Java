@@ -1,9 +1,9 @@
 package OOP.Calculator;
 
-public class ComplexCalculableFactory implements ICalculableFactory{
+public class ComplexCalculableFactory<E> implements ICalculableFactory<E>{
 
     @Override
-    public Calculable create(Object primaryArg) {
+    public Calculable create(E primaryArg) {
         return new ComplexCalculator((ComplexNum) primaryArg);
     }
 }

@@ -1,25 +1,27 @@
 package OOP.Calculator;
 
-public final class Calculator<Integer> implements Calculable<Integer> {
+public final class Calculator implements NumCalculable {
 
-    private Integer primaryArg;
+    private Number primaryArg;
 
-    public Calculator(Integer primaryArg) {
+    public Calculator(Number primaryArg) {
         this.primaryArg = primaryArg;
     }
 
     @Override
-    public Calculable<Integer> sum(Integer arg) {
-        return null;
+    public Calculable sum(Number arg) {
+        primaryArg = (Number) (primaryArg.doubleValue() + arg.doubleValue());
+        return this;
     }
 
     @Override
-    public Calculable<Integer> multi(Integer arg) {
-        return null;
+    public Calculable multi(Number arg) {
+        primaryArg = (Number) (primaryArg.doubleValue() * arg.doubleValue());
+        return this;
     }
 
     @Override
-    public Integer getResult() {
+    public Number getResult() {
         return primaryArg;
     }
 }

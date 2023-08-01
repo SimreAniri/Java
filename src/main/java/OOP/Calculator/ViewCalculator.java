@@ -27,8 +27,8 @@ public class ViewCalculator {
                     continue;
                 }
                 if (cmd.equals("=")) {
-                    int result = calculator.getResult();
-                    System.out.printf("Результат %d\n", result);
+                    Object result = calculator.getResult();
+                    System.out.printf("Результат %d\n", result.toString());
                     break;
                 }
             }

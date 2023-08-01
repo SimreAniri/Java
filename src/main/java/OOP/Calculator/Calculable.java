@@ -1,7 +1,7 @@
 package OOP.Calculator;
 
-public interface Calculable<E> {
-    Calculable<E> sum(E arg);
-    Calculable<E> multi(E arg);
+public interface Calculable<E>{
+    Calculable sum(E arg);
+    Calculable multi(E arg);
     E getResult();
 }
