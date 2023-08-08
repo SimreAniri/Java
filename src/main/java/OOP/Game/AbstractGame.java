@@ -85,7 +85,12 @@ public abstract class AbstractGame implements Game {
         return result;
     }
 
-    public void readLog() throws FileNotFoundException {
-        log.readLog();
+    public void readLog() {
+        try {
+            log.readLog();
+        } catch (FileNotFoundException e) {
+            System.out.println("Лог не найден");
+            System.out.println(e.getMessage());
+        }
     }
 }
