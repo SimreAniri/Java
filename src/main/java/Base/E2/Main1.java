@@ -9,8 +9,8 @@ public class Main1 {
     }
 
     /**
-     * @apiNote Запрашивает у пользователя ввод дробного числа
      * @return число типа float
+     * @apiNote Запрашивает у пользователя ввод дробного числа
      */
     static float sayFloat() {
         System.out.println("Введите число: ");
